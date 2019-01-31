@@ -1,7 +1,13 @@
+const path = require('path')
 module.exports = {
-  lintOnSave: false, // 不保存為eslint規範的代碼
-  productionSourceMap: false, // 打包時不產生map文件，加快打包速度
+  // 不保存為eslint規範的代碼
+  lintOnSave: false,
+
+  // 打包時不產生map文件，加快打包速度
+  productionSourceMap: false,
+
   chainWebpack: config => {
+    // 在.vue檔中可以轉換iview
     config.module
       .rule('vue')
       .test(/\.vue$/)
@@ -10,5 +16,26 @@ module.exports = {
       .options({
         prefix: true
       })
+
+    // 啟用hotReload
+    config.module
+      .rule('vue')
+      .test(/\.vue$/)
+      .use('vue-loader')
+      .loader('vue-loader')
+      .options({
+        hotReload: true
+      })
+  },
+
+  // css預處理轉換
+  pluginOptions: {
+    'style-resources-loader': {
+      preProcessor: 'stylus',
+      patterns: [
+        path.resolve(__dirname, './src/styles/_base.styl')
+      ]
+    }
   }
+
 }

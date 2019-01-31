@@ -25,12 +25,5 @@ export default {
 </script>
 
 <style lang="stylus">
-@import './assets/styles/app.styl'
-
-#app 
-  font-family $primary-font
-  text-align center
-  color $primary-color
-  margin-top 60px
-
+@import './styles/app.styl'
 </style>
