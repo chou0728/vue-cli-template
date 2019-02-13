@@ -36,6 +36,13 @@ module.exports = {
         path.resolve(__dirname, './src/styles/_base.styl')
       ]
     }
+  },
+
+  // webpack-dev-server 設定
+  devServer: {
+    host: '127.0.0.1',
+    port: 8080
+    // proxy: 'http://10.1.1.56:4444'
   }
 
 }
